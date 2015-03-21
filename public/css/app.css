@@ -1,0 +1,67 @@
+/* _typography.scss */
+body {
+  font-family: 'museo', 'helvetica neue', helvetica, sans-serif; }
+
+h1, h2, h3, h4 {
+  font-family: 'museo-slab', georgia, serif; }
+
+p {
+  font-family: 'museo', 'helvetica neue', helvetica, sans-serif; }
+
+h1 {
+  font-size: 3.6em; }
+
+h2 {
+  font-size: 3.1em; }
+
+p, li {
+  font-size: 1.6em; }
+
+button, li {
+  font-family: 'museo-sans', 'helvetica neue', helvetica, sans-serif; }
+
+/* _colors.scss */
+header {
+  background: #d2e1e4;
+  box-shadow: 1px 3px 5px #31231e; }
+
+body {
+  background: #d2e1e4; }
+
+.quote {
+  background: white;
+  color: #89a894; }
+
+/* _layout.scss */
+/* _mixins.scss */
+header h1 {
+  padding: 30px;
+  text-align: center; }
+header nav {
+  overflow: hidden; }
+  header nav ul {
+    list-style: none;
+    padding-left: 0; }
+    header nav ul li {
+      display: block;
+      padding: 15px;
+      text-align: center;
+      float: left; }
+      header nav ul li a {
+        text-decoration: none; }
+
+footer nav {
+  overflow: hidden; }
+  footer nav ul {
+    list-style: none;
+    padding-left: 0; }
+    footer nav ul li {
+      display: block;
+      padding: 15px;
+      text-align: center;
+      float: left; }
+      footer nav ul li a {
+        text-decoration: none; }
+
+
+/*# sourceMappingURL=app.css.map */

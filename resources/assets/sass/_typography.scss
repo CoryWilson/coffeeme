@@ -1,0 +1,34 @@
+/* _typography.scss */
+
+$primary-typeface   : 'brandon-grotesque',verdana,sans-serif;
+$secondary-typeface : 'rooney-web',georgia,serif;
+
+$slab: 'museo-slab',georgia,serif;
+$sans: 'museo-sans','helvetica neue',helvetica,sans-serif;
+$default: 'museo','helvetica neue',helvetica,sans-serif;
+
+body {
+	font-family: $default;
+}
+
+h1,h2,h3,h4 {
+  font-family: $slab;
+}
+
+p {
+  font-family: $default;
+}
+
+h1 {
+  font-size: 3.6em;
+}
+h2 {
+  font-size: 3.1em;
+}
+p,li {
+  font-size: 1.6em;
+}
+
+button,li{
+	font-family: $sans;
+}
