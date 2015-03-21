@@ -10,23 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', function(){
-	//$results = DB::select('select * from users');
-	return view('welcome');//,$results);
-});
+Route::get('/', 'PagesController@index');
 
-Route::get('/about', function(){
-	return 'About Content Goes Here.';
-});
-
-Route::get('/about/directions', function(){
-	return 'Directions goes here.';
-});
-
-Route::get('/about/{theSubject}', function($theSubject){
-	return $theSubject.' Content Goes Here.';
-});
-
-Route::get('/about/classes/{theSubject}', function($theSubject){
-	return  "Content About {$theSubject} classes Goes Here.";
-});
+Route::get('/about', 'PagesController@about');
