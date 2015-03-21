@@ -20,7 +20,7 @@ class PagesController extends Controller {
 
 	public function about(){
 
-		$users = DB::table('users')->get();
+		$users = DB::collection('users')->get();
 
 		var_dump($users);
 

@@ -13,3 +13,11 @@
 Route::get('/', 'PagesController@index');
 
 Route::get('/about', 'PagesController@about');
+
+Route::get('/test', 'PagesController@test');
+
+Route::get('/register', 'UserController@register');
+
+Route::get('/login', 'UserController@login');
+
+Route::post('/store', 'UserController@store');
