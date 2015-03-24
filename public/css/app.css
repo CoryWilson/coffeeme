@@ -1,21 +1,30 @@
+html, body, #map-canvas {
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
 /* _typography.scss */
 body {
   font-family: 'museo', 'helvetica neue', helvetica, sans-serif; }
 
-h1, h2, h3, h4 {
-  font-family: 'museo-slab', georgia, serif; }
+h1, h2, h3, h4, #title {
+  font-family: 'museo-slab', georgia, serif;
+  font-weight: 700; }
 
 p {
   font-family: 'museo', 'helvetica neue', helvetica, sans-serif; }
 
-h1 {
+h1, #title {
   font-size: 3.6em; }
 
 h2 {
   font-size: 3.1em; }
 
+h3 {
+  font-size: 2.5em; }
+
 p, li {
-  font-size: 1.6em; }
+  font-size: 1.4em; }
 
 button, li {
   font-family: 'museo-sans', 'helvetica neue', helvetica, sans-serif; }
@@ -26,13 +35,41 @@ header {
   box-shadow: 1px 3px 5px #31231e; }
 
 body {
-  background: #d2e1e4; }
+  background: #f1efea; }
 
-.quote {
-  background: white;
-  color: #89a894; }
+nav.row {
+  background: #31231e; }
+  nav.row a {
+    display: block;
+    border: 2px solid #f1efea;
+    background: none; }
+    nav.row a h1 {
+      color: #f1efea;
+      border: none; }
+
+.entry {
+  border-top: 2px solid #31231e; }
 
 /* _layout.scss */
+.nav {
+  padding: 30px 0; }
+
+h1 {
+  text-align: center; }
+
+.content h2 {
+  text-align: center;
+  margin: 30px auto; }
+.content .entry {
+  padding: 15px 0 15px 50px;
+  margin: 30px auto; }
+  .content .entry h3 {
+    margin: 15px auto; }
+
+#map-canvas {
+  border-top: 2px solid #31231e;
+  border-bottom: 2px solid #31231e; }
+
 /* _mixins.scss */
 header h1 {
   padding: 30px;

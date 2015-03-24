@@ -23,7 +23,6 @@
 
 </head>
 <body>
-	<div class="container small-11 small-centered columns">
 	
 	@yield('header')
 
@@ -31,11 +30,12 @@
 
 	@yield('footer')
 
-	</div>
 	<!-- Scripts -->
-	<script type="text/javascript" src="<?= asset('/js/modernizr.js');?>"></script>
 	<script type="text/javascript" src="<?= asset('/js/jquery-1.11.2.min.js');?>"></script>
+	<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script type="text/javascript" src="<?= asset('/js/foundation.min.js');?>"></script>
 	<script type="text/javascript" src="<?= asset('/js/geolocation.js');?>"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAA-kqhnli_fFFLNUVitAMOBMANWvn6vgw"></script>
+	<script type="text/javascript" src="<?= asset('/js/maps.js');?>"></script>
 </body>
 </html>

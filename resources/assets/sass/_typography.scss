@@ -11,22 +11,26 @@ body {
 	font-family: $default;
 }
 
-h1,h2,h3,h4 {
+h1,h2,h3,h4,#title {
   font-family: $slab;
+  font-weight: 700;
 }
 
 p {
   font-family: $default;
 }
 
-h1 {
+h1,#title{
   font-size: 3.6em;
 }
 h2 {
   font-size: 3.1em;
 }
+h3 {
+  font-size: 2.5em;
+}
 p,li {
-  font-size: 1.6em;
+  font-size: 1.4em;
 }
 
 button,li{

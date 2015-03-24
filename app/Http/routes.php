@@ -21,3 +21,15 @@ Route::get('/register', 'UserController@register');
 Route::get('/login', 'UserController@login');
 
 Route::post('/store', 'UserController@store');
+
+Route::get('/coordinates', function(){
+
+	$jsonData = Input::all();
+
+	//$data = json_decode($jsonData);
+
+	if(Request::ajax()){
+		var_dump($jsonData);
+	}
+
+});

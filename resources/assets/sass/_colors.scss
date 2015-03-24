@@ -4,7 +4,7 @@ $light-blue: rgba(210, 225, 228, 1);
 $dark-brown: rgba(49, 35, 30, 1);
 $brown: rgba(104, 78, 50, 1);
 $beige: rgba(206, 200, 181, 1);
-$white: rgba(255, 255, 255, 1);
+$white: rgba(241, 239, 234, 1);
 $black: rgba(0,0,0,1);
 
 header {
@@ -12,9 +12,20 @@ header {
   box-shadow: 1px 3px 5px $dark-brown;
 }
 body {
-  background: $light-blue;
-}
-.quote {
   background: $white;
-  color: $green;
+}
+nav.row {
+  background: $dark-brown;
+  a {
+  	display: block;
+  	border: 2px solid $white;
+  	background: none;
+  	h1 {
+  		color: $white;
+  		border: none;
+  	}
+  }
+}
+.entry {
+  border-top: 2px solid $dark-brown;
 }

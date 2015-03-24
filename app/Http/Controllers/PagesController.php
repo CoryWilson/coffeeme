@@ -11,11 +11,11 @@ class PagesController extends Controller {
 
 	public function index(){
 
-		$name = "Home Page";
+		$name = "Coffee Me";
 
-		$lessons = ["my first lesson", "my second lesson", "my third lesson"];
+		$shops = DB::collection('coffee_shops')->get();
 
-		return view('pages.home', compact('name'), compact('lessons'));
+		return view('pages.home', compact('name'), compact('shops'));
 	}
 
 	public function about(){
@@ -24,7 +24,6 @@ class PagesController extends Controller {
 
 		$user = DB::collection('users')->where('name','cory')->first();
 
-		var_dump($user);
 
 		return view('pages.about');
 	}
