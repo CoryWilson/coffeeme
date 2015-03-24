@@ -20,9 +20,11 @@ class PagesController extends Controller {
 
 	public function about(){
 
-		$users = DB::collection('users')->get();
+		//$users = DB::collection('users')->get();
 
-		var_dump($users);
+		$user = DB::collection('users')->where('name','cory')->first();
+
+		var_dump($user);
 
 		return view('pages.about');
 	}

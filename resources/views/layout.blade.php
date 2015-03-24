@@ -36,5 +36,6 @@
 	<script type="text/javascript" src="<?= asset('/js/modernizr.js');?>"></script>
 	<script type="text/javascript" src="<?= asset('/js/jquery-1.11.2.min.js');?>"></script>
 	<script type="text/javascript" src="<?= asset('/js/foundation.min.js');?>"></script>
+	<script type="text/javascript" src="<?= asset('/js/geolocation.js');?>"></script>
 </body>
 </html>

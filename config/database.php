@@ -48,20 +48,6 @@ return [
 
 	'connections' => [
 
-		// 'mysql' => [
-		// 	'driver'    	=> 'mysql',
-		// 	'host'      	=> env('DB_HOST', 'localhost'),
-		// 	'port'      	=> env('DB_PORT', '8889'),
-		// 	'unix_socket'   => '/Applications/MAMP/tmp/mysql/mysql.sock',
-		// 	'database'  	=> env('DB_DATABASE', 'coffeeme'),
-		// 	'username'  	=> env('DB_USERNAME', 'root'),
-		// 	'password'  	=> env('DB_PASSWORD', 'root'),
-		// 	'charset'   	=> 'utf8',
-		// 	'collation' 	=> 'utf8_unicode_ci',
-		// 	'prefix'    	=> '',
-		// 	'strict'    	=> false,
-		// ]
-
 		'mysql' => [
 			'driver'    	=> 'mysql',
 			'host'      	=> env('DB_HOST'),
@@ -80,9 +66,9 @@ return [
 			'driver'		=> 'mongodb',
 			'host'      	=> env('MDB_HOST'),
 			'port'      	=> env('MDB_PORT'),
-			'database'  	=> env('MDB_DATABASE'),
 			'username'  	=> env('MDB_USERNAME'),
 			'password'  	=> env('MDB_PASSWORD'),
+			'database'  	=> env('MDB_DATABASE'),
 		]
 
 	],

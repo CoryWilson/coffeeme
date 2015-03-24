@@ -148,6 +148,8 @@ return [
 
 		//MongoDB Service Provider
 		'Jenssegers\Mongodb\MongodbServiceProvider',
+		'Jenssegers\Mongodb\Auth\PasswordResetServiceProvider',
+		'Jenssegers\Mongodb\Session\SessionServiceProvider',
 
 	],
 

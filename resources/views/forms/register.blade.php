@@ -12,7 +12,7 @@
 	{!! Form::open(['url'=>'/store']) !!}
 
 		{!! Form::email('email', '', ['placeholder' => 'Email']) !!}
-		{!! Form::text('username', '', ['placeholder' => 'Username']) !!}
+		{!! Form::text('name', '', ['placeholder' => 'Username']) !!}
 		{!! Form::password('password', ['placeholder' => 'Password']) !!}
 
 		{!! Form::submit('register', ['class' => 'button']) !!}

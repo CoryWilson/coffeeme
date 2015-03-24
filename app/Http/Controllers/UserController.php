@@ -21,10 +21,16 @@ class UserController extends Controller {
 	public function store(){
 
 		$email = Request::get('email');
-		$username = Request::get('username');
+		$name = Request::get('name');
 		$password = Request::get('password');
 
-		return $email.' '.$username.' '.$password;
+		$user = new User;
+		$user->email = $email;
+		$user->name = $name;
+		$user->password = $password;
+		$user->save();
+
+		return $user;
 
 	}
 
