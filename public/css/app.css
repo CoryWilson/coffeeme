@@ -58,6 +58,9 @@ body {
 .entry {
   border-top: 2px solid #31231e; }
 
+.entry:nth-child(2) {
+  border: none; }
+
 #map-canvas {
   border-top: 2px solid #31231e;
   border-bottom: 2px solid #31231e; }
@@ -111,6 +114,10 @@ h1 {
   .login button:hover, .signup button:hover {
     background: #31231e;
     color: #f1efea; }
+
+.ratefav {
+  margin-top: 60px;
+  padding: 15px 0; }
 
 /* _mixins.scss */
 header h1 {

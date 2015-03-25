@@ -24,7 +24,7 @@
 		<input type="text" name="name" value="{{ old('name') }}" placeholder="Username" />
 		<input type="email" name="email" value="{{ old('email') }}" placeholder="Email" />
 		<input type="password" name="password" placeholder="Password" />
-		<input type="password" name="password_confirmation" placeholder="Password" />
+		<input type="password" name="password_confirmation" placeholder="Confirm Password" />
 
 		<button class="small-10 small-centered columns" type="submit">
 			Sign Up

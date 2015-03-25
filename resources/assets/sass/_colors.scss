@@ -38,8 +38,14 @@ body {
 .entry {
   border-top: 2px solid $dark-brown;
 }
+.entry:nth-child(2){
+  border:none;
+}
 #map-canvas {
   border-top: 2px solid $dark-brown;
   border-bottom: 2px solid $dark-brown;
 }
 
+.ratefav {
+
+}

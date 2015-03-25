@@ -17,6 +17,18 @@ Route::get('/', 'PagesController@index');
 
 Route::get('/about', 'PagesController@about');
 
+Route::get('/shop/{name}', function($name){
+
+	$shop = DB::collection('coffee_shops')->where('name', $name)->first();
+
+	//var_dump($shop);
+	
+	return view('pages.coffeeShop', compact('shop'));
+
+});
+
+Route::get('/profile', 'PagesController@profile');
+
 Route::get('/favorites', 'PagesController@favorites');
 
 Route::get('/test', 'PagesController@test');
@@ -45,17 +57,17 @@ Route::controllers([
 
 /***  Geolocation Stuff ***/
 
-Route::get('/coordinates', function(){
+Route::post('/coordinates', function(){
 
 	if(Request::ajax()){
+		//var_dump(Input::all());
 		$coords = Input::get();
-		// $lat = $coords['lat'];
-		// $lng = $coords['lng'];
-		return $coords;
+		$lat = $coords['lat'];
+		$lng = $coords['lng'];
+		DB::collection('coordinates')->update(
+		    ['lat' => $lat, 'lng' => $lng]
+		);
+		return 'We Dun Ajaxed It';
 	}
 
-	redirect('/about');
-
 });
-
-

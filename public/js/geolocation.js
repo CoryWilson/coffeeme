@@ -12,17 +12,27 @@ $(document).ready(function(){
       data.lat = position.coords.latitude;
       data.lng = position.coords.longitude;
 
-      $.ajax({
-        url: 'http://localhost:8888/coordinates',
-        type: 'get',
-        data: data,
-        //data: JSON.stringify(data),
-        contentType: 'application/json',
-        jsonpCallback: 'callback',
-        success: function(data) {
-          console.log(data);
+      $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
       });
+
+      $.post('http://localhost:8888/coordinates', {lat: data.lat, lng: data.lng}, function(data){
+        console.log(data);
+      });
+
+      // $.ajax({
+      //   url: 'http://localhost:8888/coordinates',
+      //   type: 'post',
+      //   data: data,
+      //   //data: JSON.stringify(data),
+      //   contentType: 'application/json',
+      //   jsonpCallback: 'callback',
+      //   success: function(data) {
+      //     console.log(data);
+      //   }
+      // });
 
     };
     var geoError = function(position) {

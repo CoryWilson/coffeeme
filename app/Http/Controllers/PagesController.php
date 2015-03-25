@@ -5,6 +5,8 @@ use App\Http\Controllers\Controller;
 
 use Auth;
 use DB;
+use App\Rating;
+use App\CoffeeShop;
 
 use Illuminate\Http\Request;
 
@@ -13,29 +15,44 @@ class PagesController extends Controller {
 
 	public function index(){
 
-		$name = "Coffee Me";
-
 		//return \Auth::user();
 
 		//get shops near user location
 
-		echo Config::get('local/coords.coordinates_key');
+		//echo Config::get('local/coords.coordinates_key');
 
+		$coords = DB::collection('coordinates')->get();
+		$coordinates = $coords[0];
 		$shops = DB::collection('coffee_shops')->get();
 
-		return view('pages.home', compact('name'), compact('shops'));
+		return view('pages.home', compact('coordinates'), compact('shops'));
 	}
 
-	public function coffeeShop(){
+	// public function coffeeShop($name){
 
-		//show coffee shop details
-		//get coffee shop info in coffee_shops where coffee shop name = coffee shop
+	// 	//show coffee shop details
+	// 	//get coffee shop info in coffee_shops where coffee shop name = coffee shop
 
-		//if logged in show rating, favoriting abilities
-		//else show aggregate rating and aggregate favorite drink
+	// 	//if logged in show rating, favoriting abilities
+	// 	//else show aggregate rating and aggregate favorite drink
 
-		redirect('/');
-	}
+	// 	$shops = DB::collection('coffee_shops')->where('name', $name)->first();
+
+	// 	public function rating(){
+
+
+	// 	$shops->
+
+	// 	// 	$coffeeShop = CoffeeShop::first();
+	// 	// 	$coffeeShop->rating = array('user_id':'ObjectId("'.Auth::id().'")','rating':'8');
+	// 	// 	$coffeeShop->save();
+
+	// 	// 	var_dump($coffeeShop);
+
+	// 	}
+
+	// 	return view('pages.coffeeShop', compact('shops'));
+	// }
 
 	public function profile(){
 		//show user profile
@@ -43,8 +60,13 @@ class PagesController extends Controller {
 
 		//if logged in send user to page
 		//else redirect to log in
-
-		redirect('/');
+		if (Auth::guest()){
+			return redirect('/auth/login');
+		}
+		else {
+			return view('pages.profile');
+		}
+		
 	}
 
 	public function favorites(){
@@ -54,17 +76,21 @@ class PagesController extends Controller {
 
 		$name = "Coffee Me";
 
-		
-
 		if (Auth::guest()){
-			redirect('/');
+			return redirect('/auth/login');
 		}
-		else{
+		else {
 			$shops = DB::collection('coffee_shops')->get();
 			return view('pages.favorites', compact('name'), compact('shops'));
 		}
 
 
 	}
+
+	// public function rate() {
+	// 	$rating = new Rating;
+	// 	$rating->value = 1-10;
+	// 	$rating->save();
+	// }
 
 }

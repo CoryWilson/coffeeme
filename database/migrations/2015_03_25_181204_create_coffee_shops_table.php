@@ -12,10 +12,10 @@ class CreateCoffeeShopsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('coffee_shops', function(Blueprint $collection)
+		Schema::create('coffee_shops', function(Blueprint $table)
 		{
-			$collection->increments('id');
-			$collection->timestamps();
+			$table->increments('id');
+			$table->timestamps();
 		});
 	}
 
