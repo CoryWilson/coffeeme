@@ -3,6 +3,7 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Auth;
 use DB;
 
 use Illuminate\Http\Request;
@@ -50,9 +51,16 @@ class PagesController extends Controller {
 
 		$name = "Coffee Me";
 
-		$shops = DB::collection('coffee_shops')->get();
+		
 
-		return view('pages.favorites', compact('name'), compact('shops'));
+		if (Auth::guest()){
+			redirect('/');
+		}
+		else{
+			$shops = DB::collection('coffee_shops')->get();
+			return view('pages.favorites', compact('name'), compact('shops'));
+		}
+
 
 	}
 

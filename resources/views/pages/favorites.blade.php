@@ -1,11 +1,12 @@
 @extends('layout')
 
 @section('content')
-		
 	<div id="map-canvas" class="small-12 small-centered columns" style="width: 100%; height: 450px"></div>
 
 	<div class="content">
-		<h2>Local Coffee Shops</h2>
+		<div class="heading">
+			<h2> {{ \Auth::user()->name }}'s Favorite Coffee Shops</h2>
+		</div>
 		@foreach($shops as $shop)
 			<div class="entry row small-11 small-centered columns">
 				<h3>{{ $shop['name'] }}</h3>
@@ -17,7 +18,6 @@
 			</div>
 		@endforeach
 	</div>
-	
 @stop
 
 @section('moreJS')

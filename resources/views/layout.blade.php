@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+	<title>Coffee Me | ASL Project 2</title>
 
 	<!-- start Typekit -->
 	<script src="//use.typekit.net/fha4czt.js"></script>
@@ -25,7 +25,7 @@
 <body>
 	
 	@yield('header')
-	
+
 	<nav class="top-bar" data-topbar role="navigation">
 		<ul>
 			<li class="favorites left">
