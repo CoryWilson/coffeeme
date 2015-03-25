@@ -80,8 +80,10 @@ class PagesController extends Controller {
 			return redirect('/auth/login');
 		}
 		else {
+			$coords = DB::collection('coordinates')->get();
+			$coordinates = $coords[0];
 			$shops = DB::collection('coffee_shops')->get();
-			return view('pages.favorites', compact('name'), compact('shops'));
+			return view('pages.favorites', compact('coordinates'), compact('shops'));
 		}
 
 

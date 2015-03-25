@@ -70,11 +70,11 @@
 @section('moreJS')
 	<script>
 		function initialize() {
-			var lat = 28.5928987;
-			var lng = -81.305375;
+			var lat = {{ $shop['lat'] }};
+			var lng = {{ $shop['long'] }};
 			var mapOptions = {
 			  center: { lat: lat, lng: lng},
-			  zoom: 12
+			  zoom: 15
 			};
 			var map = new google.maps.Map(document.getElementById('map-canvas'),
 			    mapOptions);

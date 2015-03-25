@@ -9,7 +9,7 @@
 		</div>
 		@foreach($shops as $shop)
 			<div class="entry row small-11 small-centered columns">
-				<h3>{{ $shop['name'] }}</h3>
+				<h3><a href="/shop/{{$shop['name']}}">{{ $shop['name'] }}</a></h3>
 				<p>Address: {{ $shop['street_address'] }}, {{ $shop['locality'] }}, {{ $shop['region'] }}, {{ $shop['postal_code'] }}</p>
 				<p>Phone: <a href="tel:{{ $shop['phone'] }}">{{ $shop['phone'] }}</a></p>
 				<p>Website: <a href="{{ $shop['website_url'] }}">{{ $shop['website_url'] }}</a></p>
@@ -23,11 +23,11 @@
 @section('moreJS')
 	<script>
 		function initialize() {
-			var lat = 28.5928987;
-			var lng = -81.305375;
+			var lat = {{ $coordinates['lat'] }};
+			var lng = {{ $coordinates['lng'] }};
 			var mapOptions = {
 			  center: { lat: lat, lng: lng},
-			  zoom: 12
+			  zoom: 13
 			};
 			var map = new google.maps.Map(document.getElementById('map-canvas'),
 			    mapOptions);
