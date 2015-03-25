@@ -13,6 +13,8 @@ class PagesController extends Controller {
 
 		$name = "Coffee Me";
 
+		//return \Auth::user();
+
 		//get shops near user location
 
 		$shops = DB::collection('coffee_shops')->get();

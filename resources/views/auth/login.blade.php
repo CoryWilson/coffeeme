@@ -31,9 +31,9 @@
 		<button class="small-10 small-centered columns" type="submit">
 			Login
 		</button>
-		<a class="button small-10 small-centered columns" href="{{ url('/password/email') }}">
+		<!-- <a class="button small-10 small-centered columns" href="{{ url('/password/email') }}">
 			Forgot Your Password?
-		</a>
+		</a> -->
 	</form>
 </div>	
 
