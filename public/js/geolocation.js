@@ -15,7 +15,8 @@ $(document).ready(function(){
       $.ajax({
         url: 'http://localhost:8888/coordinates',
         type: 'get',
-        data: JSON.stringify(data),
+        data: data,
+        //data: JSON.stringify(data),
         contentType: 'application/json',
         jsonpCallback: 'callback',
         success: function(data) {

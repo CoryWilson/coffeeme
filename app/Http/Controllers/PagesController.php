@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller {
 
+
 	public function index(){
 
 		$name = "Coffee Me";
@@ -17,6 +18,8 @@ class PagesController extends Controller {
 		//return \Auth::user();
 
 		//get shops near user location
+
+		echo Config::get('local/coords.coordinates_key');
 
 		$shops = DB::collection('coffee_shops')->get();
 

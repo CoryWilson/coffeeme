@@ -14,7 +14,7 @@
 				</a>
 			</div>
 		@endif
-		
+
 		<div class="heading">
 			<h2>Local Coffee Shops</h2>
 		</div>

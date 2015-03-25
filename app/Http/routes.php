@@ -43,17 +43,19 @@ Route::controllers([
 
 ]);
 
-
 /***  Geolocation Stuff ***/
 
 Route::get('/coordinates', function(){
 
-	$jsonData = Input::all();
-
-	//$data = json_decode($jsonData);
-
 	if(Request::ajax()){
-		var_dump($jsonData);
+		$coords = Input::get();
+		// $lat = $coords['lat'];
+		// $lng = $coords['lng'];
+		return $coords;
 	}
 
+	redirect('/about');
+
 });
+
+
