@@ -36,6 +36,13 @@ Route::get('logout', 'UserController@logout');
 
 Route::post('/store', 'UserController@store');
 
+Route::controllers([
+
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+
+]);
+
 
 /***  Geolocation Stuff ***/
 

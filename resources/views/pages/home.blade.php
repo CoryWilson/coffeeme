@@ -1,32 +1,24 @@
 @extends('layout')
 
 @section('content')
-	<nav class="top-bar" data-topbar role="navigation">
-		<ul>
-			<li class="favorites left">
-				<a href="/favorites">
-					Favorites
-				</a>
-			</li>
-			<li class="login right">
-				<a href="/login">
-					Login
-				</a>
-			</li>
-			<li>
-				<h1 class="title">
-					<a href="/">Coffee Me</a>
-				</h1>
-			</li>
-			
-		</ul>
-	</nav>	
-	
 		
 	<div id="map-canvas" class="small-12 small-centered columns" style="width: 100%; height: 450px"></div>
 
 	<div class="content">
-		<h2>Local Coffee Shops</h2>
+
+		@if (Auth::guest())
+			<div class="cta">
+				<h3>Get The Most Out Of Coffee Me!</h3>
+				<a href="{{ url('/auth/register') }}" class="button small-11 small-centered columns">
+					Sign Up
+				</a>
+			</div>
+		@endif
+		
+		<div class="heading">
+			<h2>Local Coffee Shops</h2>
+		</div>
+
 		@foreach($shops as $shop)
 			<div class="entry row small-11 small-centered columns">
 				<h3>{{ $shop['name'] }}</h3>

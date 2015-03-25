@@ -19,7 +19,20 @@ class UserController extends Controller {
 	}
 
 	public function processRegister(){
+
 		//insert user into mongoDB
+		$email = Request::get('email');
+		$username = Request::get('username');
+		$password = Request::get('password');
+
+		$user = new User;
+		$user->email = $email;
+		$user->name = $name;
+		$user->password = $password;
+		$user->save();
+
+		return $user;
+		//redirect('/');
 	}
 
 	public function login(){
@@ -40,23 +53,5 @@ class UserController extends Controller {
 		session_destroy();
 
 	}
-
-	//add user to database
-	// public function store(){
-
-	// 	$email = Request::get('email');
-	// 	$name = Request::get('name');
-	// 	$password = Request::get('password');
-
-	// 	$user = new User;
-	// 	$user->email = $email;
-	// 	$user->name = $name;
-	// 	$user->password = $password;
-	// 	$user->save();
-
-	// 	return $user;
-
-	// }
 	
-
 }

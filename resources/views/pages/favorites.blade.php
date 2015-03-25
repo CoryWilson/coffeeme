@@ -1,27 +1,6 @@
 @extends('layout')
 
 @section('content')
-	<nav class="top-bar" data-topbar role="navigation">
-		<ul>
-			<li class="favorites left">
-				<a href="/favorites">
-					Favorites
-				</a>
-			</li>
-			<li class="login right">
-				<a href="/logout">
-					Logout
-				</a>
-			</li>
-			<li>
-				<h1 class="title">
-					<a href="/">Coffee Me</a>
-				</h1>
-			</li>
-			
-		</ul>
-	</nav>	
-	
 		
 	<div id="map-canvas" class="small-12 small-centered columns" style="width: 100%; height: 450px"></div>
 

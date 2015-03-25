@@ -25,6 +25,34 @@
 <body>
 	
 	@yield('header')
+	
+	<nav class="top-bar" data-topbar role="navigation">
+		<ul>
+			<li class="favorites left">
+				<a href="{{ url('/favorites') }}">
+					Favorites
+				</a>
+			</li>
+			@if (Auth::guest())
+				<li class="login right">
+					<a href="{{ url('/auth/login') }}">
+						Login
+					</a>
+				</li>
+			@else
+				<li class="login right">
+					<a href="{{ url('/auth/logout') }}">
+						Logout
+					</a>
+				</li>
+			@endif
+			<li>
+				<h1 class="title">
+					<a href="{{ url('/') }}">Coffee Me</a>
+				</h1>
+			</li>
+		</ul>
+	</nav>	
 
 	@yield('content')
 

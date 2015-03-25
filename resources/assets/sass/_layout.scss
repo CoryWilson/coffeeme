@@ -14,10 +14,21 @@ h1 {
 }
 .content {
 
-	h2 {
-		text-align:center;
-		margin: 60px auto;
+	.cta {
+		padding: 60px 0;
+		h3{
+			text-align: center;
+		}
 	}
+	
+	.heading, .formhead {
+		padding: 60px 0;
+		margin-bottom: -30px;
+		h2 {
+			text-align:center;
+		}
+	}
+	
 
 	.entry {
 		padding: 30px 1.1rem 15px 1.1rem;
@@ -26,11 +37,19 @@ h1 {
 			margin: 15px auto;
 		}
 	}
-
-}
-#map-canvas {
-	border-top: 2px solid $dark-brown;
-	border-bottom: 2px solid $dark-brown;
+	a.button {
+		margin: 30px auto 0;
+		display: block;
+		background: none;
+		border: 4px solid $dark-brown;
+		color: $dark-brown;
+		border-radius: 5px;
+		font-weight: 700;
+	}
+	a.button:hover {
+		background: $dark-brown;
+		color: $white;
+	}
 }
 .login, .signup {
 	margin-top: 30px;

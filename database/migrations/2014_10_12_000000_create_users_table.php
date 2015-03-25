@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration {
 		{
 			$collection->increments('id');
 			$collection->string('email')->unique();
-			$collection->string('username');
+			$collection->string('name');
 			$collection->string('password', 60);
 			$collection->rememberToken();
 			$collection->timestamps();

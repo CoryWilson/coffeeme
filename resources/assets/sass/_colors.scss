@@ -28,6 +28,18 @@ body {
     }
   }
 }
+.content{
+  .heading{
+    background: $beige;
+  }
+  
+}
+
 .entry {
   border-top: 2px solid $dark-brown;
 }
+#map-canvas {
+  border-top: 2px solid $dark-brown;
+  border-bottom: 2px solid $dark-brown;
+}
+
