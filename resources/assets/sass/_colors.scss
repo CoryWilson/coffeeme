@@ -14,16 +14,18 @@ header {
 body {
   background: $white;
 }
-nav.row {
-  background: $dark-brown;
-  a {
-  	display: block;
-  	border: 2px solid $white;
-  	background: none;
-  	h1 {
-  		color: $white;
-  		border: none;
-  	}
+.top-bar {
+  background: $dark-brown url('../img/black-linen.png') repeat;
+  li {
+    a{
+      display: block;
+      color: $white;
+    }
+  }
+  li {
+    a:hover {
+      color: $green;
+    }
   }
 }
 .entry {

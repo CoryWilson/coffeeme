@@ -11,7 +11,7 @@ body {
 	font-family: $default;
 }
 
-h1,h2,h3,h4,#title {
+h1,h2,h3,h4,.title {
   font-family: $slab;
   font-weight: 700;
 }
@@ -20,14 +20,14 @@ p {
   font-family: $default;
 }
 
-h1,#title{
-  font-size: 3.6em;
+h1,.title{
+  font-size: 3.3em;
 }
 h2 {
-  font-size: 3.1em;
+  font-size: 2.8em;
 }
 h3 {
-  font-size: 2.5em;
+  font-size: 2.2em;
 }
 p,li {
   font-size: 1.4em;
@@ -35,4 +35,18 @@ p,li {
 
 button,li{
 	font-family: $sans;
+}
+
+@media(max-width:650px){
+	.top-bar{
+
+		.title{
+			font-size: 2.3em;
+		}
+		li.favorites,li.login {
+			margin: 25px 0;
+			font-size: 1.2em;
+		}
+
+	}
 }

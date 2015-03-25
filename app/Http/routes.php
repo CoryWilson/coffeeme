@@ -10,17 +10,34 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+
+/*** Index Routes ***/
+
 Route::get('/', 'PagesController@index');
 
 Route::get('/about', 'PagesController@about');
 
+Route::get('/favorites', 'PagesController@favorites');
+
 Route::get('/test', 'PagesController@test');
+
+
+/*** User Register, User Login, User Logout ***/
 
 Route::get('/register', 'UserController@register');
 
+Route::post('/processRegister', 'UserController@processRegister');
+
 Route::get('/login', 'UserController@login');
 
+Route::post('/processLogin', 'UserController@processLogin');
+
+Route::get('logout', 'UserController@logout');
+
 Route::post('/store', 'UserController@store');
+
+
+/***  Geolocation Stuff ***/
 
 Route::get('/coordinates', function(){
 

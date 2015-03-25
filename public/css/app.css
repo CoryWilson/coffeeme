@@ -7,27 +7,34 @@ html, body, #map-canvas {
 body {
   font-family: 'museo', 'helvetica neue', helvetica, sans-serif; }
 
-h1, h2, h3, h4, #title {
+h1, h2, h3, h4, .title {
   font-family: 'museo-slab', georgia, serif;
   font-weight: 700; }
 
 p {
   font-family: 'museo', 'helvetica neue', helvetica, sans-serif; }
 
-h1, #title {
-  font-size: 3.6em; }
+h1, .title {
+  font-size: 3.3em; }
 
 h2 {
-  font-size: 3.1em; }
+  font-size: 2.8em; }
 
 h3 {
-  font-size: 2.5em; }
+  font-size: 2.2em; }
 
 p, li {
   font-size: 1.4em; }
 
 button, li {
   font-family: 'museo-sans', 'helvetica neue', helvetica, sans-serif; }
+
+@media (max-width: 650px) {
+  .top-bar .title {
+    font-size: 2.3em; }
+  .top-bar li.favorites, .top-bar li.login {
+    margin: 25px 0;
+    font-size: 1.2em; } }
 
 /* _colors.scss */
 header {
@@ -37,31 +44,33 @@ header {
 body {
   background: #f1efea; }
 
-nav.row {
-  background: #31231e; }
-  nav.row a {
+.top-bar {
+  background: #31231e url('../img/black-linen.png') repeat; }
+  .top-bar li a {
     display: block;
-    border: 2px solid #f1efea;
-    background: none; }
-    nav.row a h1 {
-      color: #f1efea;
-      border: none; }
+    color: #f1efea; }
+  .top-bar li a:hover {
+    color: #89a894; }
 
 .entry {
   border-top: 2px solid #31231e; }
 
 /* _layout.scss */
-.nav {
-  padding: 30px 0; }
+.top-bar {
+  height: auto; }
+  .top-bar ul {
+    margin-right: 1.1rem; }
+  .top-bar .favorites, .top-bar .login {
+    margin: 40px 0; }
 
 h1 {
   text-align: center; }
 
 .content h2 {
   text-align: center;
-  margin: 30px auto; }
+  margin: 60px auto; }
 .content .entry {
-  padding: 15px 0 15px 50px;
+  padding: 30px 1.1rem 15px 1.1rem;
   margin: 30px auto; }
   .content .entry h3 {
     margin: 15px auto; }
@@ -69,6 +78,19 @@ h1 {
 #map-canvas {
   border-top: 2px solid #31231e;
   border-bottom: 2px solid #31231e; }
+
+.login, .signup {
+  margin-top: 30px; }
+  .login button, .signup button {
+    display: block;
+    background: none;
+    border: 4px solid #31231e;
+    color: #31231e;
+    border-radius: 5px;
+    font-weight: 700; }
+  .login button:hover, .signup button:hover {
+    background: #31231e;
+    color: #f1efea; }
 
 /* _mixins.scss */
 header h1 {

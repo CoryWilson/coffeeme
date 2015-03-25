@@ -36,6 +36,8 @@
 	<script type="text/javascript" src="<?= asset('/js/foundation.min.js');?>"></script>
 	<script type="text/javascript" src="<?= asset('/js/geolocation.js');?>"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAA-kqhnli_fFFLNUVitAMOBMANWvn6vgw"></script>
-	<script type="text/javascript" src="<?= asset('/js/maps.js');?>"></script>
+	
+	@yield('moreJS')
+
 </body>
 </html>

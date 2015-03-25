@@ -9,8 +9,8 @@
 				</a>
 			</li>
 			<li class="login right">
-				<a href="/login">
-					Login
+				<a href="/logout">
+					Logout
 				</a>
 			</li>
 			<li>

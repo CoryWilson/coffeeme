@@ -1,9 +1,14 @@
 /* _layout.scss */
 
-.nav {
-	padding: 30px 0;
+.top-bar {
+	height: auto;
+	ul{
+		margin-right: 1.1rem;
+	}
+	.favorites, .login {
+		margin: 40px 0;
+	}
 }
-
 h1 {
 	text-align: center;
 }
@@ -11,11 +16,11 @@ h1 {
 
 	h2 {
 		text-align:center;
-		margin: 30px auto;
+		margin: 60px auto;
 	}
 
 	.entry {
-		padding: 15px 0 15px 50px;
+		padding: 30px 1.1rem 15px 1.1rem;
 		margin: 30px auto;
 		h3 {
 			margin: 15px auto;
@@ -26,4 +31,19 @@ h1 {
 #map-canvas {
 	border-top: 2px solid $dark-brown;
 	border-bottom: 2px solid $dark-brown;
+}
+.login, .signup {
+	margin-top: 30px;
+	button{
+		display: block;
+		background: none;
+		border: 4px solid $dark-brown;
+		color: $dark-brown;
+		border-radius: 5px;
+		font-weight: 700;
+	}
+	button:hover {
+		background: $dark-brown;
+		color: $white;
+	}
 }
