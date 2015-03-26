@@ -21,9 +21,41 @@ class PagesController extends Controller {
 
 		//echo Config::get('local/coords.coordinates_key');
 
+		
+		//$shops = DB::collection('coffee_shops')->get();
+
+
+		//db.coffee_shops.find({location:{$near:[28.7216012,-85.38935769999999]}})
+		// $shops = DB::collection('coffee_shops')->raw(function($collection)
+		// {
 		$coords = DB::collection('coordinates')->get();
 		$coordinates = $coords[0];
-		$shops = DB::collection('coffee_shops')->get();
+        
+        $strLat = $coordinates['lat'];
+        $numLat = (float)$strLat;
+       
+       	$strLng = $coordinates['lng'];
+       	$numLng = (float)$strLng;
+
+        //$coordinates["lat"],$coordinates["lng"]
+
+		$shops = CoffeeShop::whereRaw(array('location'=>array('$near'=>array($numLat,$numLng))))->get();
+			
+
+		// $shops = CoffeeShop::raw(function($collection)
+		// {
+
+		//  	$coords = DB::collection('coordinates')->get();
+		//  	$coordinates = $coords[0];
+
+		//  	$query = $collection->find(array('location' => array('$near' => array($coordinates["lat"],$coordinates["lng"]))));
+
+		// 	return $query;		
+
+		// });
+
+		//var_dump($shops);
+
 
 		return view('pages.home', compact('coordinates'), compact('shops'));
 	}

@@ -65,7 +65,7 @@ Route::post('/coordinates', function(){
 		$lat = $coords['lat'];
 		$lng = $coords['lng'];
 		DB::collection('coordinates')->update(
-		    ['lat' => $lat, 'lng' => $lng]
+		    ['lat' => $lat, 'lng' => $lng, 'location' => [$lat,$lng]]
 		);
 		return 'We Dun Ajaxed It';
 	}
