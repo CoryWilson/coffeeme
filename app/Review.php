@@ -13,13 +13,6 @@ class Review extends Model {
 	 */
 	protected $table = 'reviews';
 
-    /*public function getCreateRules()
-    {
-        return array(
-            'rating'=>'required|integer|between:1,5'
-        );
-    }*/
-
     // Relationships
     public function user(){
         return $this->belongsTo('App\User');
@@ -28,18 +21,6 @@ class Review extends Model {
     public function coffeeShop(){
         return $this->belongsTo('App\CoffeeShopSQL');
     }
-
-    /*public function scopeApproved($query){
-        return $query->where('approved', true);
-    }
-
-    public function scopeSpam($query){
-        return $query->where('spam', true);
-    }
-
-    public function scopeNotSpam($query){
-        return $query->where('spam', false);
-    }*/
 
     public function getTimeagoAttribute(){
         $date = CarbonCarbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();

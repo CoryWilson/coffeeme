@@ -76,10 +76,10 @@ class PagesController extends Controller {
 
 		//processes favoriting for coffee shop
 
-		// $fav = new Favorite;
-		// $fav->user_id = Auth::id();
-		// $fav->shop_name = $name;
-		// $fav->save();
+		$favorite = DB::table('favorites')->insert(
+			array('user_id' => Auth::id(), 'shop_id' => $id)
+		);
+		return Redirect::to('shop/'.$id);
 
 	}
 
@@ -101,9 +101,13 @@ class PagesController extends Controller {
 			return redirect('/auth/login');
 		}
 		else {
-			$favorites = DB::table('favorites')->where('user_id',Auth::id())->get();
-			var_dump($favorites);
-			return view('pages.favorites', compact('coordinates'), compact('shops'));
+			$favorites = DB::table('favorites')
+				->join('coffee_shops', 'favorites.shop_id', '=', 'coffee_shops.id')
+				->where('user_id',Auth::id())
+				->select('coffee_shops.id','coffee_shops.name','coffee_shops.phone','coffee_shops.website_url')
+				->get();
+			
+			return view('pages.favorites', compact('favorites'), compact('shops'));
 		}
 
 

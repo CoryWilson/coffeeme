@@ -19,7 +19,7 @@ Route::get('shop/{id}', 'PagesController@shop');
 
 Route::post('shop/rate/{id}', 'PagesController@rate');
 
-Route::post('shop/fav/{id}', array('before'=>'csrf'), 'PagesController@fav');
+Route::post('shop/fav/{id}', 'PagesController@fav');
 
 Route::post('shop/favDrink/{id}', array('before'=>'csrf'), 'PagesController@favDrink');
 

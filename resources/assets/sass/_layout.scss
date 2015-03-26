@@ -72,6 +72,16 @@ h1 {
 	padding: 15px 0;
 	.favorite button  {
 		margin: 0 auto 30px;
+		display: block;
+		background: none;
+		border: 4px solid $dark-brown;
+		color: $dark-brown;
+		border-radius: 5px;
+		font-weight: 700;
+	}
+	.favorite button:hover {
+		background: $dark-brown;
+		color: $white;
 	}
 	form {
 		margin: 30px auto 0;

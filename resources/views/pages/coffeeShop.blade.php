@@ -37,7 +37,7 @@
 						<button type="submit">Rate {{$data['shopSQL']['name']}}</button>
 					</div>
 				</form>
-				<form action="favDrink/{{$data['shopSQL']['id']}}" method="POST">
+				<!-- <form action="favDrink/{{$data['shopSQL']['id']}}" method="POST">
 					<div class="favdrink small-11 small-centered columns">
 						<h4>Pick Your Favorite Drink:</h4>
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -49,7 +49,7 @@
 							<option value="Latte">Latte</option>
 						</select>
 					</div>
-				</form>
+				</form> -->
 			</div>
 			@endif
 
@@ -59,8 +59,8 @@
 			<p>Phone: <a href="tel:{{ $data['shopSQL']['phone'] }}">{{ $data['shopSQL']['phone'] }}</a></p>
 			<p>Website: <a href="{{ $data['shopSQL']['website_url'] }}">{{ $data['shopSQL']['website_url'] }}</a></p>
 			<p>Rating: {{ $data['rating'] }} </p>
-			<p>Favorite Drink: $data['shopSQL']['favorite_drink']</p>
-		</div>
+<!-- 			<p>Favorite Drink: $data['shopSQL']['favorite_drink']</p>
+ -->		</div>
 	</div>
 	
 @stop
@@ -86,7 +86,6 @@
 			      '<h1 id="firstHeading" class="firstHeading">{{$data["shopSQL"]["name"]}}</h1>'+
 			      '<div id="bodyContent">'+
 			      '<p>Rating: {{$data["rating"]}}</p>'+
-				  '<p>Favorite Drink: $shopSQL["favorite_drink"]</p>'+
 			      '</div>'+
 			      '</div>';
 
