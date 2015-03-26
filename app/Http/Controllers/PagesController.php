@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use DB;
 use App\Favorite;
-use App\Rating;
+use App\Review;
 use App\CoffeeShopMDB;
 use App\CoffeeShopSQL;
 
@@ -44,7 +44,9 @@ class PagesController extends Controller {
 
 		$shopMDB = CoffeeShopMDB::where('name',$name)->first();
 
-		//$reviews = $shop->reviews()->with('user');
+		//$reviews = $shopSQL->reviews();
+
+		//var_dump($reviews);
 
 		return view('pages.coffeeShop', compact('shopSQL'), compact('shopMDB'));//, compact('reviews'));
 	}
@@ -55,9 +57,9 @@ class PagesController extends Controller {
 
 		$input = array('rating' => Input::get('rating'));
 		
-		$review = new Review;
+		$review = new Review();
 
-		$review->storeRatingForShop($name, $input['rating']);
+		$review->storeReviewForShop($name, $input['rating']);
 
 		return Redirect::to('/shop/'.$name);
 
@@ -67,7 +69,7 @@ class PagesController extends Controller {
 
 		//processes favoriting for coffee shop
 
-		$fav = new Favorite;
+		$fav = new Favorite();
 		$fav->user_id = Auth::id();
 		$fav->shop_name = $name;
 		$fav->save();

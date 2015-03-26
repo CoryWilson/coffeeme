@@ -15,17 +15,17 @@ class CoffeeShopSQL extends Model {
 	// and incrementing the rating_count column by 1
 
 	public function recalculateRating($rating){
-		/*$reviews = $this->reviews();//->notSpam()->approved();
+		$reviews = $this->reviews();
 		$avgRating = $reviews->avg('rating');
 		$this->rating_cache = round($avgRating,1);
 		$this->rating_count = $reviews->count();
-		$this->save();*/
+		$this->save();
 
-		$avgRating = 0;
-		$ratingTotal = 0 + $rating;
-		$ratingCount = 0 + count($rating);
-		$avgRating = $ratingCount/$ratingTotal;
-		$save($avgRating);
+		// $avgRating = 0;
+		// $ratingTotal = 0 + $rating;
+		// $ratingCount = 0 + count($rating);
+		// $avgRating = $ratingCount/$ratingTotal;
+		// $save($avgRating);
 
 	}
 

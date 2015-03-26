@@ -6,7 +6,7 @@ class Favorite extends Model {
 
 	protected $table = 'favorites';
 
-	protected $guarded = ['user_id', 'shop_name'];
+	// protected $guarded = ['user_id', 'shop_name'];
 
 }
 
