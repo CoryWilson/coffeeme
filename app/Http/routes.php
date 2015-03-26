@@ -15,15 +15,13 @@
 
 Route::get('/', 'PagesController@index');
 
-Route::get('/about', 'PagesController@about');
-
 Route::get('/shop/{name}', 'PagesController@shop');
 
 Route::post('/shop/{name}', array('before'=>'csrf'), 'PagesController@rate');
 
-Route::post('/favShop', 'PagesController@favShop');
+Route::post('/shop/{name}', array('before'=>'csrf'), 'PagesController@fav');
 
-Route::get('/profile', 'PagesController@profile');
+Route::post('/shop/{name}', array('before'=>'csrf'), 'PagesController@favDrink');
 
 Route::get('/favorites', 'PagesController@favorites');
 
@@ -59,7 +57,7 @@ Route::post('/coordinates', function(){
 		$coords = Input::get();
 		$lat = $coords['lat'];
 		$lng = $coords['lng'];
-		DB::collection('coordinates')->update(
+		DB::connection('mongodb')->collection('coordinates')->update(
 		    ['lat' => $lat, 'lng' => $lng, 'location' => [$lat,$lng]]
 		);
 		return 'We Dun Ajaxed It';

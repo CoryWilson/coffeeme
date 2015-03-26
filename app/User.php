@@ -7,7 +7,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Moloquent;
 
-class User extends Moloquent implements AuthenticatableContract, CanResetPasswordContract {
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
 	use Authenticatable, CanResetPassword;
 
@@ -16,7 +16,7 @@ class User extends Moloquent implements AuthenticatableContract, CanResetPasswor
 	 *
 	 * @var string
 	 */
-	protected $collection = 'users';
+	protected $table = 'users';
 
 	/**
 	 * The attributes that are mass assignable.

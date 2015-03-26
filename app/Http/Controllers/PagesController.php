@@ -5,8 +5,10 @@ use App\Http\Controllers\Controller;
 
 use Auth;
 use DB;
+use App\Favorite;
 use App\Rating;
 use App\CoffeeShop;
+use App\CoffeeShopSQL;
 
 use Illuminate\Http\Request;
 
@@ -15,11 +17,9 @@ class PagesController extends Controller {
 
 	public function index(){
 
-		//return \Auth::user();
+		//get shops near user location using mongodb
 
-		//get shops near user location
-
-		$coords = DB::collection('coordinates')->get();
+		$coords = DB::connection('mongodb')->collection('coordinates')->get();
 		$coordinates = $coords[0];
         
         $strLat = $coordinates['lat'];
@@ -29,35 +29,22 @@ class PagesController extends Controller {
        	$numLng = (float)$strLng;
 
 
-		$shops = CoffeeShop::whereRaw(array('location'=>array('$near'=>array($numLat,$numLng))))->get();
+		$shops = CoffeeShop::on('mongodb')->whereRaw(array('location'=>array('$near'=>array($numLat,$numLng))))->get();
 			
 		return view('pages.home', compact('coordinates'), compact('shops'));
 	}
 
-	public function profile(){
-		//show user profile
-		//get user info in users where username = username
-
-		//if logged in send user to page
-		//else redirect to log in
-		if (Auth::guest()){
-			return redirect('/auth/login');
-		}
-		else {
-			return view('pages.profile');
-		}
-		
-	}
-
 	public function shop($name){
 	
-		//$shop = CoffeeShop::where('name',$name)->first();
+		$shop = CoffeeShopSQL::where('name',$name)->get();
 
-		$shop = CoffeeShop::where('name',$name)->first();
+		$shopSQL = $shop[0];
+
+		$shopMDB = CoffeeShop::where('name',$name)->first();
 
 		//$reviews = $shop->reviews()->with('user');
 
-		return view('pages.coffeeShop', compact('shop'));//, compact('reviews'));
+		return view('pages.coffeeShop', compact('shopSQL'), compact('shopMDB'));//, compact('reviews'));
 	}
 
 	public function rate($name){
@@ -77,13 +64,23 @@ class PagesController extends Controller {
 
 	}
 
-	// public function favShop($shop){
+	public function fav($name){
 
-	// 	DB::collection('users')->update(
-	// 			array('favorites'=>array('shop_id'=>$shop['_id']))
-	// 		);
+		$fav = new Favorite;
+		$fav->user_id = Auth::id();
+		$fav->shop_name = $name;
+		$fav->save();
 
-	// }
+	}
+
+	public function favDrink($id){
+
+		// $fav = new Favorite;
+		// $fav->user_id = Auth::id();
+		// $fav->shop_id = $id;
+		// $fav->save();
+
+	}
 
 	public function favorites(){
 

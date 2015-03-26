@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 use Moloquent;
 
 
-class Review extends Moloquent {
+class Review extends Eloquent {
 
 	/**
 	 * The database collection used by the model.
