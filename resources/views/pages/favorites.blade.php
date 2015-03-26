@@ -7,7 +7,10 @@
 		<div class="heading">
 			<h2> {{ \Auth::user()->name }}'s Favorite Coffee Shops</h2>
 		</div>
-		@foreach($shops as $shop)
+		@foreach($favorites as $i)
+
+			<?= json_decode($favorites)?>
+	
 			<div class="entry row small-11 small-centered columns">
 				<h3><a href="/shop/{{$shop['name']}}">{{ $shop['name'] }}</a></h3>
 				<p>Address: {{ $shop['street_address'] }}, {{ $shop['locality'] }}, {{ $shop['region'] }}, {{ $shop['postal_code'] }}</p>

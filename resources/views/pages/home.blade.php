@@ -21,7 +21,7 @@
 
 		@foreach($shops as $shop)
 			<div class="entry row small-11 small-centered columns">
-				<h3><a href="/shop/{{$shop['name']}}">{{ $shop['name'] }}</a></h3>
+				<h3><a href="/shop/{{$shop['id']}}">{{ $shop['name'] }}</a></h3>
 				<p>Address: {{ $shop['street_address'] }}, {{ $shop['locality'] }}, {{ $shop['region'] }}, {{ $shop['postal_code'] }}</p>
 				<p>Phone: <a href="tel:{{ $shop['phone'] }}">{{ $shop['phone'] }}</a></p>
 				<p>Website: <a href="{{ $shop['website_url'] }}">{{ $shop['website_url'] }}</a></p>

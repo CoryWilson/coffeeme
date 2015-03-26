@@ -23,13 +23,13 @@
 
 			@else
 			<div class="ratefav small-11 small-centered columns">
-				<form action="favShop" method="POST">
+				<form action="{{$shopSQL['id']}}" method="POST">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<button class="favorite small-10 small-centered columns" type="submit">
 						Add {{ $shopSQL['name'] }} to Favorites
 					</button>
 				</form>
-				<form action="{{$shopSQL['name']}}" method="POST">
+				<form action="{{$shopSQL['id']}}" method="POST">
 					<div class="rate small-11 small-centered columns">
 						<h4>Rate {{ $shopSQL['name'] }}:</h4>
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -37,7 +37,7 @@
 						<button type="submit">Rate {{$shopSQL['name']}}</button>
 					</div>
 				</form>
-				<form action="/favDrink" method="POST">
+				<form action="/{{$shopSQL['id']}}" method="POST">
 					<div class="favdrink small-11 small-centered columns">
 						<h4>Pick Your Favorite Drink:</h4>
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">

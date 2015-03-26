@@ -15,13 +15,13 @@
 
 Route::get('/', 'PagesController@index');
 
-Route::get('/shop/{name}', 'PagesController@shop');
+Route::get('shop/{id}', 'PagesController@shop');
 
-Route::post('/shop/{name}', array('before'=>'csrf'), 'PagesController@rate');
+Route::post('shop/{id}', array('before'=>'csrf'), 'PagesController@rate');
 
-Route::post('/shop/{name}', array('before'=>'csrf'), 'PagesController@fav');
+Route::post('shop/{id}', array('before'=>'csrf'), 'PagesController@fav');
 
-Route::post('/shop/{name}', array('before'=>'csrf'), 'PagesController@favDrink');
+Route::post('/shop/{id}', array('before'=>'csrf'), 'PagesController@favDrink');
 
 Route::get('/favorites', 'PagesController@favorites');
 

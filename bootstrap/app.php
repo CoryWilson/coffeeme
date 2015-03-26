@@ -39,6 +39,7 @@ $app->singleton(
 $app->singleton(
 	'Illuminate\Contracts\Debug\ExceptionHandler',
 	'App\Exceptions\Handler'
+	//'Illuminate\Foundation\Exceptions\Handler'
 );
 
 /*

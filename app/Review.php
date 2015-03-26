@@ -9,28 +9,53 @@ class Review extends Model {
 	 *
 	 * @var string
 	 */
-	protected $table = 'review';
+	/*protected $table = 'review';*/
 
-	public function user(){
-		return $this->belongsTo('User');//, 'user_id');
-	}
+	// Validation rules for the ratings
+    public function getCreateRules(){
+        return array(
+            'rating'=>'required|integer|between:1,5'
+        );
+    }
 
-	public function shop(){
-		return $this->belongsTo('CoffeeShopSQL');//, 'shop_id');
-	}
+    // Relationships
+    public function user(){
+        return $this->belongsTo('User');
+    }
 
-	// this function takes in product ID, comment and the rating and attaches the review to the product by its ID, then the average rating for the product is recalculated
-	public function storeReviewForShop($shopName, $rating){
-		$coffeeShop = CoffeeShopSQL::find($shopName);
+    public function product(){
+        return $this->belongsTo('CoffeeShopSQL');
+    }
 
-		// this will be added when we add user's login functionality
-		$this->user_id = Auth::user()->id;
-		//$this->user_id = Auth::id();
-		$this->rating = $rating;
-		$shop->reviews()->save($this);
+    // Scopes
+    public function scopeApproved($query){
+       	return $query->where('approved', true);
+    }
 
-		// recalculate ratings for the specified product
-		$coffeeShop->recalculateRating($rating);
-	}
+    public function scopeSpam($query){
+       	return $query->where('spam', true);
+    }
+
+    public function scopeNotSpam($query){
+       	return $query->where('spam', false);
+    }
+
+    // Attribute presenters
+    public function getTimeagoAttribute(){
+    	$date = CarbonCarbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();
+    	return $date;
+    }
+
+    // this function takes in shop_id, comment and the rating and attaches the review to the coffee shop by its ID, then the average rating for the coffee shop is recalculated
+    public function storeReviewForCoffeeShop($shop_id, $rating){
+        $coffeeShop = CoffeeShopSQL::find($shop_id);
+
+        $this->user_id = Auth::id(); //Auth::user()->id;
+        $this->rating = $rating;
+        $coffeeShop->reviews()->save($this);
+
+        // recalculate ratings for the specified shop
+        $coffeeShop->recalculateRating($rating);
+    }
 
 }

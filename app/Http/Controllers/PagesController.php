@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Auth;
 use DB;
 use App\Favorite;
-use App\Review;
+use App\Reviews;
 use App\CoffeeShopMDB;
 use App\CoffeeShopSQL;
 
@@ -34,45 +34,50 @@ class PagesController extends Controller {
 		return view('pages.home', compact('coordinates'), compact('shops'));
 	}
 
-	public function shop($name){
+	public function shop($id){
 	
 		//returns a detailed coffee shop page
 
-		$shop = CoffeeShopSQL::where('name',$name)->get();
+		$shopSQL = CoffeeShopSQL::find($id);
 
-		$shopSQL = $shop[0];
+		$shopMDB = CoffeeShopMDB::where('id',$id)->first();
 
-		$shopMDB = CoffeeShopMDB::where('name',$name)->first();
 
-		//$reviews = $shopSQL->reviews();
+		//$reviews = $shopSQL->reviews()->with('user')->approved()->notSpam()->orderBy('created_at','desc')->paginate(100);
 
-		//var_dump($reviews);
+
+		// var_dump($reviews);
 
 		return view('pages.coffeeShop', compact('shopSQL'), compact('shopMDB'));//, compact('reviews'));
 	}
 
-	public function rate($name){
+	public function rate($id){
 
 		//proecesses rating for coffee shop
 
 		$input = array('rating' => Input::get('rating'));
 		
-		$review = new Review();
+		$review = new Review;
 
-		$review->storeReviewForShop($name, $input['rating']);
+		$validator = Validator::make( $input, $review->getCreateRules());
 
-		return Redirect::to('/shop/'.$name);
+		if ($validator->passes()) {
+			$review->storeReviewForProduct($id, $input['rating']);
+			return Redirect::to('products/'.$id.'#reviews-anchor')->with('review_posted',true);
+		}
+		
+		return Redirect::to('products/'.$id.'#reviews-anchor')->withErrors($validator)->withInput();
 
 	}
 
-	public function fav($name){
+	public function fav($id){
 
 		//processes favoriting for coffee shop
 
-		$fav = new Favorite();
-		$fav->user_id = Auth::id();
-		$fav->shop_name = $name;
-		$fav->save();
+		// $fav = new Favorite;
+		// $fav->user_id = Auth::id();
+		// $fav->shop_name = $name;
+		// $fav->save();
 
 	}
 
