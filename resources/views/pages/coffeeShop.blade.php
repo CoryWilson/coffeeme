@@ -25,16 +25,16 @@
 			<div class="ratefav small-11 small-centered columns">
 				<form action="fav/{{$data['shopSQL']['id']}}" method="POST">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
-					<button class="favorite small-10 small-centered columns" type="submit">
+					<button id="favorite" class="small-10 small-centered columns" type="submit">
 						Add {{ $data['shopSQL']['name'] }} to Favorites
 					</button>
 				</form>
 				<form action="rate/{{$data['shopSQL']['id']}}" method="POST">
-					<div class="rate small-11 small-centered columns">
+					<div class="small-11 small-centered columns">
 						<h4>Rate {{ $data['shopSQL']['name'] }}:</h4>
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-						<input type="range" name="rating" min="0" max="5"/>
-						<button type="submit">Rate {{$data['shopSQL']['name']}}</button>
+						<input id="range" type="range" name="rating" min="0" max="5"/>
+						<button id="rate" class="right" type="submit">Rate {{$data['shopSQL']['name']}}</button>
 					</div>
 				</form>
 				<!-- <form action="favDrink/{{$data['shopSQL']['id']}}" method="POST">

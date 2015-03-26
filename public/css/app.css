@@ -121,7 +121,9 @@ h1 {
 .ratefav {
   margin-top: 60px;
   padding: 15px 0; }
-  .ratefav .favorite button {
+  .ratefav #range {
+    margin-top: 25px; }
+  .ratefav button#favorite, .ratefav button#rate {
     margin: 0 auto 30px;
     display: block;
     background: none;
@@ -129,7 +131,7 @@ h1 {
     color: #31231e;
     border-radius: 5px;
     font-weight: 700; }
-  .ratefav .favorite button:hover {
+  .ratefav button#favorite:hover, .ratefav button#rate:hover {
     background: #31231e;
     color: #f1efea; }
   .ratefav form {

@@ -70,7 +70,10 @@ h1 {
 .ratefav {
 	margin-top: 60px;
 	padding: 15px 0;
-	.favorite button  {
+	#range {
+		margin-top: 25px;
+	}
+	button#favorite, button#rate  {
 		margin: 0 auto 30px;
 		display: block;
 		background: none;
@@ -79,7 +82,7 @@ h1 {
 		border-radius: 5px;
 		font-weight: 700;
 	}
-	.favorite button:hover {
+	button#favorite:hover, button#rate:hover {
 		background: $dark-brown;
 		color: $white;
 	}
