@@ -25,8 +25,6 @@
 				<p>Address: {{ $shop['street_address'] }}, {{ $shop['locality'] }}, {{ $shop['region'] }}, {{ $shop['postal_code'] }}</p>
 				<p>Phone: <a href="tel:{{ $shop['phone'] }}">{{ $shop['phone'] }}</a></p>
 				<p>Website: <a href="{{ $shop['website_url'] }}">{{ $shop['website_url'] }}</a></p>
-				<p>Rating: *Pull From MongoDB*</p>
-				<p>Favorite Drink: *Pull From MongoDB*</p>
 			</div>
 		@endforeach
 	</div>

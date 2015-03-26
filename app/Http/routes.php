@@ -17,11 +17,11 @@ Route::get('/', 'PagesController@index');
 
 Route::get('shop/{id}', 'PagesController@shop');
 
-Route::post('shop/{id}', array('before'=>'csrf'), 'PagesController@rate');
+Route::post('shop/rate/{id}', 'PagesController@rate');
 
-Route::post('shop/{id}', array('before'=>'csrf'), 'PagesController@fav');
+Route::post('shop/fav/{id}', array('before'=>'csrf'), 'PagesController@fav');
 
-Route::post('/shop/{id}', array('before'=>'csrf'), 'PagesController@favDrink');
+Route::post('shop/favDrink/{id}', array('before'=>'csrf'), 'PagesController@favDrink');
 
 Route::get('/favorites', 'PagesController@favorites');
 

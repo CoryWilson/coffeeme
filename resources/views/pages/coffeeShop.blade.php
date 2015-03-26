@@ -16,28 +16,28 @@
 		@endif
 
 		<div class="heading">
-			<h2>{{ $shopSQL['name'] }}</h2>
+			<h2>{{ $data['shopSQL']['name'] }}</h2>
 		</div>
 
 			@if (Auth::guest())
 
 			@else
 			<div class="ratefav small-11 small-centered columns">
-				<form action="{{$shopSQL['id']}}" method="POST">
+				<form action="fav/{{$data['shopSQL']['id']}}" method="POST">
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<button class="favorite small-10 small-centered columns" type="submit">
-						Add {{ $shopSQL['name'] }} to Favorites
+						Add {{ $data['shopSQL']['name'] }} to Favorites
 					</button>
 				</form>
-				<form action="{{$shopSQL['id']}}" method="POST">
+				<form action="rate/{{$data['shopSQL']['id']}}" method="POST">
 					<div class="rate small-11 small-centered columns">
-						<h4>Rate {{ $shopSQL['name'] }}:</h4>
+						<h4>Rate {{ $data['shopSQL']['name'] }}:</h4>
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
-						<input type="range" name="rating" min="0" max="10"/>
-						<button type="submit">Rate {{$shopSQL['name']}}</button>
+						<input type="range" name="rating" min="0" max="5"/>
+						<button type="submit">Rate {{$data['shopSQL']['name']}}</button>
 					</div>
 				</form>
-				<form action="/{{$shopSQL['id']}}" method="POST">
+				<form action="favDrink/{{$data['shopSQL']['id']}}" method="POST">
 					<div class="favdrink small-11 small-centered columns">
 						<h4>Pick Your Favorite Drink:</h4>
 						<input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -55,11 +55,11 @@
 
 
 		<div class="entry row small-11 small-centered columns">
-			<p>Address: {{ $shopSQL['street_address'] }}, {{ $shopSQL['locality'] }}, {{ $shopSQL['region'] }}, {{ $shopSQL['postal_code'] }}</p>
-			<p>Phone: <a href="tel:{{ $shopSQL['phone'] }}">{{ $shopSQL['phone'] }}</a></p>
-			<p>Website: <a href="{{ $shopSQL['website_url'] }}">{{ $shopSQL['website_url'] }}</a></p>
-			<p>Rating: $shopSQL['rating'] </p>
-			<p>Favorite Drink: $shopSQL['favorite_drink']</p>
+			<p>Address: {{ $data['shopSQL']['street_address'] }}, {{ $data['shopSQL']['locality'] }}, {{ $data['shopSQL']['region'] }}, {{ $data['shopSQL']['postal_code'] }}</p>
+			<p>Phone: <a href="tel:{{ $data['shopSQL']['phone'] }}">{{ $data['shopSQL']['phone'] }}</a></p>
+			<p>Website: <a href="{{ $data['shopSQL']['website_url'] }}">{{ $data['shopSQL']['website_url'] }}</a></p>
+			<p>Rating: {{ $data['rating'] }} </p>
+			<p>Favorite Drink: $data['shopSQL']['favorite_drink']</p>
 		</div>
 	</div>
 	
@@ -68,8 +68,8 @@
 @section('moreJS')
 	<script>
 		function initialize() {
-			var lat = {{ $shopMDB['lat'] }};
-			var lng = {{ $shopMDB['long'] }};
+			var lat = {{ $data['shopMDB']['lat'] }};
+			var lng = {{ $data['shopMDB']['long'] }};
 			var mapOptions = {
 			  center: { lat: lat, lng: lng},
 			  zoom: 18,
@@ -83,9 +83,9 @@
 			var contentString = '<div id="content">'+
 			      '<div id="siteNotice">'+
 			      '</div>'+
-			      '<h1 id="firstHeading" class="firstHeading">{{$shopSQL["name"]}}</h1>'+
+			      '<h1 id="firstHeading" class="firstHeading">{{$data["shopSQL"]["name"]}}</h1>'+
 			      '<div id="bodyContent">'+
-			      '<p>Rating: $shopSQL["rating"]</p>'+
+			      '<p>Rating: {{$data["rating"]}}</p>'+
 				  '<p>Favorite Drink: $shopSQL["favorite_drink"]</p>'+
 			      '</div>'+
 			      '</div>';
@@ -97,7 +97,7 @@
 			var marker = new google.maps.Marker({
 			    position: myLatlng,
 			    map: map,
-			    title:"{{ $shopSQL['name'] }}"
+			    title:"{{ $data['shopSQL']['name'] }}"
 			});
 			map.setTilt(45);
 			marker.setMap(map);

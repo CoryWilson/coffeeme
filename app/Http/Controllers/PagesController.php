@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use Auth;
 use DB;
 use App\Favorite;
-use App\Reviews;
+use App\Review;
 use App\CoffeeShopMDB;
 use App\CoffeeShopSQL;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+use Request;
+use Redirect;
 
 class PagesController extends Controller {
 
@@ -42,31 +44,31 @@ class PagesController extends Controller {
 
 		$shopMDB = CoffeeShopMDB::where('id',$id)->first();
 
+		$rating = DB::table('reviews')
+					->where('shop_id',$id)
+					->avg('rating');
 
-		//$reviews = $shopSQL->reviews()->with('user')->approved()->notSpam()->orderBy('created_at','desc')->paginate(100);
-
-
-		// var_dump($reviews);
-
-		return view('pages.coffeeShop', compact('shopSQL'), compact('shopMDB'));//, compact('reviews'));
+		$data = array(
+				'shopSQL' => $shopSQL,
+				'shopMDB' => $shopMDB,
+				'rating' => $rating
+			);
+		
+		return view('pages.coffeeShop', compact('data'));
 	}
 
 	public function rate($id){
 
 		//proecesses rating for coffee shop
-
-		$input = array('rating' => Input::get('rating'));
+		$input = Request::all();
 		
 		$review = new Review;
 
-		$validator = Validator::make( $input, $review->getCreateRules());
-
-		if ($validator->passes()) {
-			$review->storeReviewForProduct($id, $input['rating']);
-			return Redirect::to('products/'.$id.'#reviews-anchor')->with('review_posted',true);
-		}
-		
-		return Redirect::to('products/'.$id.'#reviews-anchor')->withErrors($validator)->withInput();
+		//$validator = Validator::make( $input['rating'], $review->getCreateRules());
+		//if ($validator->passes()) {
+		$review->storeReviewForCoffeeShop($id, $input['rating']);
+		return Redirect::to('shop/'.$id)->with('review_posted',true);
+		//}
 
 	}
 
