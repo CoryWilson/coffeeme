@@ -44,9 +44,11 @@ class PagesController extends Controller {
 
 		$shopMDB = CoffeeShopMDB::where('id',$id)->first();
 
-		$rating = DB::table('reviews')
+		$rate = DB::table('reviews')
 					->where('shop_id',$id)
 					->avg('rating');
+
+		$rating = round($rate,1);
 
 		$data = array(
 				'shopSQL' => $shopSQL,
