@@ -28,18 +28,24 @@
 
 			@else
 			<div class="ratefav small-11 small-centered columns">
-				<a href="/favShop" class="button favorite small-10 small-centered columns">
-					Add {{ $shop['name'] }} to Favorites
-				</a>
-				<form action="/rateShop" method="POST">
+				<form action="favShop" method="POST">
+					<input type="hidden" name="_token" value="{{ csrf_token() }}">
+					<button class="favorite small-10 small-centered columns" type="submit">
+						Add {{ $shop['name'] }} to Favorites
+					</button>
+				</form>
+				<form action="{{$shop['name']}}" method="POST">
 					<div class="rate small-11 small-centered columns">
 						<h4>Rate {{ $shop['name'] }}:</h4>
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<input type="range" name="rating" min="0" max="10"/>
+						<button type="submit">Rate {{$shop['name']}}</button>
 					</div>
 				</form>
 				<form action="/favDrink" method="POST">
 					<div class="favdrink small-11 small-centered columns">
 						<h4>Pick Your Favorite Drink:</h4>
+						<input type="hidden" name="_token" value="{{ csrf_token() }}">
 						<select name="fav_drink" id="">
 							<option value="Cold Brew">Cold Brew</option>
 							<option value="Pour Over">Pour Over</option>

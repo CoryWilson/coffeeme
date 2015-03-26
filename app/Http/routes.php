@@ -17,21 +17,16 @@ Route::get('/', 'PagesController@index');
 
 Route::get('/about', 'PagesController@about');
 
-Route::get('/shop/{name}', function($name){
+Route::get('/shop/{name}', 'PagesController@shop');
 
-	$shop = DB::collection('coffee_shops')->where('name', $name)->first();
+Route::post('/shop/{name}', array('before'=>'csrf'), 'PagesController@rate');
 
-	//var_dump($shop);
-	
-	return view('pages.coffeeShop', compact('shop'));
-
-});
+Route::post('/favShop', 'PagesController@favShop');
 
 Route::get('/profile', 'PagesController@profile');
 
 Route::get('/favorites', 'PagesController@favorites');
 
-Route::get('/test', 'PagesController@test');
 
 
 /*** User Register, User Login, User Logout ***/

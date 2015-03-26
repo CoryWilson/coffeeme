@@ -18,7 +18,7 @@ class PagesController extends Controller {
 		//return \Auth::user();
 
 		//get shops near user location
-		
+
 		$coords = DB::collection('coordinates')->get();
 		$coordinates = $coords[0];
         
@@ -34,32 +34,6 @@ class PagesController extends Controller {
 		return view('pages.home', compact('coordinates'), compact('shops'));
 	}
 
-	// public function coffeeShop($name){
-
-	// 	//show coffee shop details
-	// 	//get coffee shop info in coffee_shops where coffee shop name = coffee shop
-
-	// 	//if logged in show rating, favoriting abilities
-	// 	//else show aggregate rating and aggregate favorite drink
-
-	// 	$shops = DB::collection('coffee_shops')->where('name', $name)->first();
-
-	// 	public function rating(){
-
-
-	// 	$shops->
-
-	// 	// 	$coffeeShop = CoffeeShop::first();
-	// 	// 	$coffeeShop->rating = array('user_id':'ObjectId("'.Auth::id().'")','rating':'8');
-	// 	// 	$coffeeShop->save();
-
-	// 	// 	var_dump($coffeeShop);
-
-	// 	}
-
-	// 	return view('pages.coffeeShop', compact('shops'));
-	// }
-
 	public function profile(){
 		//show user profile
 		//get user info in users where username = username
@@ -74,6 +48,42 @@ class PagesController extends Controller {
 		}
 		
 	}
+
+	public function shop($name){
+	
+		//$shop = CoffeeShop::where('name',$name)->first();
+
+		$shop = CoffeeShop::where('name',$name)->first();
+
+		//$reviews = $shop->reviews()->with('user');
+
+		return view('pages.coffeeShop', compact('shop'));//, compact('reviews'));
+	}
+
+	public function rate($name){
+
+		$input = array('rating' => Input::get('rating'));
+		
+		$review = new Review;
+
+		//$validator = Validator::make($input,$review->getCreateRules());
+
+		//if($validator->passes()){
+		$review->storeRatingForShop($name, $input['rating']);
+		return Redirect::to('/shop/'.$name);
+		//}
+
+		//return Redirect::to('/shop/'.$name)->with('review_posted',true);
+
+	}
+
+	// public function favShop($shop){
+
+	// 	DB::collection('users')->update(
+	// 			array('favorites'=>array('shop_id'=>$shop['_id']))
+	// 		);
+
+	// }
 
 	public function favorites(){
 
