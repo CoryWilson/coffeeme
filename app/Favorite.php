@@ -8,5 +8,5 @@ class Favorite extends Model {
 
 	protected $guarded = ['user_id', 'shop_name'];
 
-
 }
+

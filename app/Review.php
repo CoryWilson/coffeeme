@@ -1,23 +1,15 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Moloquent;
 
-
-class Review extends Eloquent {
+class Review extends Model {
 
 	/**
-	 * The database collection used by the model.
+	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	//protected $collection = 'coffee_shops';
-
- 	public function getCreateRules(){
-        return array(
-            'rating'=>'required|integer|between:1,5'
-        );
-    }
+	//protected $table = 'coffee_shops';
 
 	public function user(){
 		return $this->belongsTo('User');//, 'user_id');
@@ -25,23 +17,6 @@ class Review extends Eloquent {
 
 	public function shop(){
 		return $this->belongsTo('CoffeeShop');//, 'shop_id');
-	}
-
-	public function scopeApproved($query){
-		return $query->where('approved', true);
-	}
-
-	public function scopeSpam($query){
-		return $query->where('spam', true);
-	}
-
-	public function scopeNotSpam($query){
-		return $query->where('spam', false);
-	}
-
-	public function getTimeagoAttribute(){
-		$date = \Carbon\Carbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();
-    	return $date;
 	}
 
 	// this function takes in product ID, comment and the rating and attaches the review to the product by its ID, then the average rating for the product is recalculated

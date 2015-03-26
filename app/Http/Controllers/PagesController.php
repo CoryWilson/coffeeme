@@ -7,7 +7,7 @@ use Auth;
 use DB;
 use App\Favorite;
 use App\Rating;
-use App\CoffeeShop;
+use App\CoffeeShopMDB;
 use App\CoffeeShopSQL;
 
 use Illuminate\Http\Request;
@@ -17,7 +17,7 @@ class PagesController extends Controller {
 
 	public function index(){
 
-		//get shops near user location using mongodb
+		//gets coffee shops near user location using mongodb
 
 		$coords = DB::connection('mongodb')->collection('coordinates')->get();
 		$coordinates = $coords[0];
@@ -29,18 +29,20 @@ class PagesController extends Controller {
        	$numLng = (float)$strLng;
 
 
-		$shops = CoffeeShop::on('mongodb')->whereRaw(array('location'=>array('$near'=>array($numLat,$numLng))))->get();
+		$shops = CoffeeShopMDB::on('mongodb')->whereRaw(array('location'=>array('$near'=>array($numLat,$numLng))))->get();
 			
 		return view('pages.home', compact('coordinates'), compact('shops'));
 	}
 
 	public function shop($name){
 	
+		//returns a detailed coffee shop page
+
 		$shop = CoffeeShopSQL::where('name',$name)->get();
 
 		$shopSQL = $shop[0];
 
-		$shopMDB = CoffeeShop::where('name',$name)->first();
+		$shopMDB = CoffeeShopMDB::where('name',$name)->first();
 
 		//$reviews = $shop->reviews()->with('user');
 
@@ -49,22 +51,21 @@ class PagesController extends Controller {
 
 	public function rate($name){
 
+		//proecesses rating for coffee shop
+
 		$input = array('rating' => Input::get('rating'));
 		
 		$review = new Review;
 
-		//$validator = Validator::make($input,$review->getCreateRules());
-
-		//if($validator->passes()){
 		$review->storeRatingForShop($name, $input['rating']);
-		return Redirect::to('/shop/'.$name);
-		//}
 
-		//return Redirect::to('/shop/'.$name)->with('review_posted',true);
+		return Redirect::to('/shop/'.$name);
 
 	}
 
 	public function fav($name){
+
+		//processes favoriting for coffee shop
 
 		$fav = new Favorite;
 		$fav->user_id = Auth::id();
@@ -87,15 +88,12 @@ class PagesController extends Controller {
 		//if logged in return favorites list
 		//else redirect to log in telling them to log in for that feature
 
-		$name = "Coffee Me";
-
 		if (Auth::guest()){
 			return redirect('/auth/login');
 		}
 		else {
-			$coords = DB::collection('coordinates')->get();
-			$coordinates = $coords[0];
-			$shops = DB::collection('coffee_shops')->get();
+			$favorites = DB::table('favorites')->where('user_id',Auth::id())->get();
+			var_dump($favorites);
 			return view('pages.favorites', compact('coordinates'), compact('shops'));
 		}
 
