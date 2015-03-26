@@ -28,20 +28,17 @@
 
 			@else
 			<div class="ratefav small-11 small-centered columns">
+				<a href="/favShop" class="button favorite small-10 small-centered columns">
+					Add {{ $shop['name'] }} to Favorites
+				</a>
 				<form action="/rateShop" method="POST">
-					<div class="rate small-12 small-centered columns">
+					<div class="rate small-11 small-centered columns">
 						<h4>Rate {{ $shop['name'] }}:</h4>
 						<input type="range" name="rating" min="0" max="10"/>
 					</div>
 				</form>
-				<form action="/favShop" method="POST">
-					<div class="favorite small-12 small-centered columns">
-						<h4>Add {{ $shop['name'] }} to Favorites:</h4>
-						<input type="radio" name="fav_shop" value="favorite" >
-					</div>
-				</form>
 				<form action="/favDrink" method="POST">
-					<div class="favdrink small-12 small-centered columns">
+					<div class="favdrink small-11 small-centered columns">
 						<h4>Pick Your Favorite Drink:</h4>
 						<select name="fav_drink" id="">
 							<option value="Cold Brew">Cold Brew</option>
@@ -74,21 +71,43 @@
 			var lng = {{ $shop['long'] }};
 			var mapOptions = {
 			  center: { lat: lat, lng: lng},
-			  zoom: 15
+			  zoom: 18,
+			  mapTypeId: 'satellite'
 			};
 			var map = new google.maps.Map(document.getElementById('map-canvas'),
 			    mapOptions);
 
 			var myLatlng = new google.maps.LatLng(lat,lng);
 
+			var contentString = '<div id="content">'+
+			      '<div id="siteNotice">'+
+			      '</div>'+
+			      '<h1 id="firstHeading" class="firstHeading">{{$shop["name"]}}</h1>'+
+			      '<div id="bodyContent">'+
+			      '<p>Rating: $shop["rating"]</p>'+
+				  '<p>Favorite Drink: $shop["favorite_drink"]</p>'+
+			      '</div>'+
+			      '</div>';
+
+			  var infowindow = new google.maps.InfoWindow({
+			      content: contentString
+			  });
+
 			var marker = new google.maps.Marker({
 			    position: myLatlng,
 			    map: map,
-			    title:"Hello World!"
+			    title:"{{ $shop['name'] }}"
 			});
-			
+			map.setTilt(45);
 			marker.setMap(map);
+
+			google.maps.event.addListener(marker, 'click', function() {
+		    infowindow.open(map,marker);
+		  
+		 });
+
 		}
+
 		google.maps.event.addDomListener(window, 'load', initialize);
 	</script>
 @stop

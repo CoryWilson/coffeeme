@@ -3,6 +3,9 @@ html, body, #map-canvas {
   margin: 0;
   padding: 0; }
 
+#map-canvas img {
+  max-width: none; }
+
 /* _typography.scss */
 body {
   font-family: 'museo', 'helvetica neue', helvetica, sans-serif; }
@@ -118,6 +121,10 @@ h1 {
 .ratefav {
   margin-top: 60px;
   padding: 15px 0; }
+  .ratefav a.favorite {
+    margin: 0 auto 30px; }
+  .ratefav form {
+    margin: 30px auto 0; }
 
 /* _mixins.scss */
 header h1 {
